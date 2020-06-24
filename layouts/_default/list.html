@@ -12,7 +12,7 @@
   <div id="tags">
     <ul>
       {{ range .Site.Taxonomies.tags.ByCount }}
-        <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a></li>
+        <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }} ({{ .Count }})</a></li>
       {{ end }}
     </ul>
   </div>
@@ -25,7 +25,7 @@
     {{ end }}
     <p class="date">{{ .Key }}</p>
     {{ range .Pages }}
-      <p><a href="{{ .Permalink }}">{{ .Title }}</a></p>
+      <p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
     {{ end }}
     {{ end }}
   </div>
@@ -35,5 +35,5 @@
   {{ $lunr := resources.Get "js/lunr.js" }}
   {{ $search := resources.Get "js/search.js" }}
   {{ $js := slice $jquery $mark $lunr $search | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint }}
-  <script src="{{ $js.Permalink }}"></script>
+  <script src="{{ $js.RelPermalink }}"></script>
 {{ end }}
